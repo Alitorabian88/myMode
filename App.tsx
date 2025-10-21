@@ -1,26 +1,38 @@
 import "./global.css";
-import { StatusBar, Text, useColorScheme, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {StatusBar, View, Switch} from 'react-native';
+import {useState} from "react";
+import {makeStyles} from './App.styles';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
+    return (
+        <SafeAreaProvider>
+            <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'}/>
+            <AppContent isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
+        </SafeAreaProvider>
+    );
 }
 
-function AppContent() {
-  return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-xl font-bold text-blue-500">
-        Welcome to Nativewind!
-      </Text>
-    </View>
-  );
+function AppContent({isDarkMode, setIsDarkMode}: { isDarkMode: boolean; setIsDarkMode: (v: boolean) => void }) {
+    const styles = makeStyles(isDarkMode);
+    const size: 'small' | 'medium' | 'large' = 'large';
+    const scaleMap = { small: 0.9, medium: 1.1, large: 1.3 } as const;
+    const scale = scaleMap[size];
+
+    return (
+        <View style={styles.container}>
+            <Switch
+                          value={isDarkMode}
+                          onValueChange={(isOn: boolean) => setIsDarkMode(isOn)}
+                          trackColor={{ false: '#31363F', true: '#FF7A30' }}
+                          thumbColor={isDarkMode ? '#E9E3DF' : '#E9E3DF'}
+                          style={{ transform: [{ scaleX: scale }, { scaleY: scale }] }}
+                          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            />
+        </View>
+    );
 }
 
 export default App;
