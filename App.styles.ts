@@ -18,7 +18,8 @@ export const makeStyles = (isDarkMode: boolean) => {
             justifyContent: 'flex-start',
             alignItems: 'flex-end',
             backgroundColor: theme.background,
-            padding: 40,
+            paddingRight: 20,
+            paddingTop: 50
 
         },
         title: {
