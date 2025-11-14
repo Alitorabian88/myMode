@@ -1,5 +1,6 @@
+// Packages
 import React from 'react';
-import {Switch as RNSwitch, SwitchProps as RNSwitchProps, ViewStyle} from 'react-native';
+import { Switch as RNSwitch, SwitchProps as RNSwitchProps, ViewStyle } from 'react-native';
 
 export type SwitchSize = 'small' | 'medium' | 'large' | number; // number = direct scale value
 
