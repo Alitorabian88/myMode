@@ -21,7 +21,7 @@ function AppContent({isDarkMode, setIsDarkMode}: { isDarkMode: boolean; setIsDar
     return (
         <View style={styles.container}>
             <Switch
-                size="large"
+                size="small"
                 value={isDarkMode}
                 onValueChange={(isOn: boolean) => setIsDarkMode(isOn)}
                 trackColor={{ false: '#FF7A30', true: '#FF7A30' }}
