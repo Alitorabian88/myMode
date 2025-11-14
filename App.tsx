@@ -3,7 +3,8 @@ import {StatusBar, View} from 'react-native';
 import {useState} from "react";
 import {makeStyles} from './App.styles';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import { Switch } from './src/components/ui/switch';
+import { Switch } from '@/components/ui/switch';
+import {Welcome} from "@/components/welcome";
 
 function App() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -27,6 +28,7 @@ function AppContent({isDarkMode, setIsDarkMode}: { isDarkMode: boolean; setIsDar
                 trackColor={{ false: '#FF7A30', true: '#FF7A30' }}
                 thumbColor={isDarkMode ? '#E9E3DF' : '#000000'}
             />
+            <Welcome/>
         </View>
     );
 }
